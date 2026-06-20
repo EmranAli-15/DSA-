@@ -7,7 +7,7 @@ def bigmod(base, pow, mod):
         p2 = x%mod
         return (p1*p2)%mod
     else:
-        x = bigmod(base, pow/2, mod)
+        x = bigmod(base, pow//2, mod)
         return (x*x)%mod
 
 print(bigmod(2, 30, 11))
