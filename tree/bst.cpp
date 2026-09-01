@@ -126,10 +126,61 @@ void traverse(Node *node)
     }
 }
 
+
+// BST SEARCH
+Node *bst_search(Node *root, int item)
+{
+    Node *node = root;
+
+    while (node != NULL)
+    {
+        if(node->data == item)
+        {
+            return node;
+        }
+
+        if(node->data < item)
+        {
+            node = node->right;
+        }
+        else
+        {
+            node = node->left;
+        }
+    }
+    return node;
+}
+
+
+// BST MINIMUM
+Node *bst_minimum(Node *root)
+{
+    Node *node = root;
+
+    while(node->left != NULL)
+    {
+        node = node->left;
+    }
+    return node;
+}
+
+
 int main()
 {
     Node *root = create_bst();
     traverse(root);
+
+    cout << "\n\n";
+
+    Node *sear = bst_search(root, 19);
+    cout << "Search node is ";
+    if(sear)cout << sear->data;
+    else cout << "Not found!\n\n";
+
+
+    cout << "\n\n";
+    Node *minimum = bst_minimum(root->right);
+    cout << "Minimum is -> " << minimum->data;
 
     return 0;
 }
